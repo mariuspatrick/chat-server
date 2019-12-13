@@ -1,5 +1,6 @@
 const express = require('express')
 const messageRouter = require('./message/router')
+const bodyParser = require('body-parser')
 
 const app = express()
 
@@ -9,6 +10,9 @@ app.get("/", (req, res) => {
 	res.send("Hello")
 })
 
+const jsonParser = bodyParser.json()
+
+app.use(jsonParser)
 app.use(messageRouter)
 
 app.listen(port, () => {
